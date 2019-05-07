@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.labelArtist {
+  color: orange;
+}
+
+.labelAlbum {
+  color: orangered;
+}
+
+.cs-badge {
+  margin-right: 10px;
+}

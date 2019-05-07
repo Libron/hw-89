@@ -1,0 +1,8 @@
+.Artists .Item {
+padding: 0;
+    margin-bottom: 10px;
+}
+
+.Artists .Item .Link:hover {
+    background: #fafafa;
+}

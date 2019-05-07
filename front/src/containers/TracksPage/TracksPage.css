@@ -1,0 +1,20 @@
+.Duration {
+    color: black;
+    float: right;
+}
+
+.Track {
+    color: black;
+}
+
+.Tracks .Item:hover {
+    background: #80cbc4;
+}
+
+.Tracks .btn {
+    cursor: pointer;
+}
+
+.Tracks .btn:hover {
+    color: grey;
+}
