@@ -83,7 +83,7 @@ router.post('/', auth, upload.single('image'), (req, res) => {
     }
 });
 
-router.post('/:id/toggle_publish', [auth, permit('user', 'admin')], async (req, res) => {
+router.post('/:id/toggle_publish', [auth, permit('admin')], async (req, res) => {
     const album = await Album.findById(req.params.id);
 
     if (!album) {

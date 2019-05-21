@@ -28,7 +28,7 @@ class ArtistsPage extends Component {
                             <ArtistThumbnail image={artist.image} />
                             <span>{artist.name}</span>
                                 <span style={{float: 'right'}}>
-                                     {artist.published ? null : <Badge color='danger' className="cs-badge" onClick={() => this.props.publishArtist(artist._id)}>Publish now</Badge>}
+                                     {(!artist.published && (this.props.user !== null) && (this.props.user.role === 'admin')) ? <Badge color='danger' className="cs-badge" onClick={() => this.props.publishArtist(artist._id)}>Publish now</Badge> : null}
                                     {this.props.user && ((this.props.user.role === 'admin') || (this.props.user._id === artist.user._id)) && <Badge color="warning" className="cs-badge" onClick={() => this.props.deleteArtist(artist._id)}>Delete</Badge>}
                                     <Badge color="light" className="cs-badge">{artist.user.username}</Badge>
                                 </span>

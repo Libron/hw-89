@@ -8,13 +8,10 @@ const styles = {
 };
 
 const ArtistThumbnail = props => {
-  let image = null;
-
-  if (props.image || props.image !== 'null') {
-    image = apiURL + '/uploads/' + props.image;
+  if (props.image && props.image !== 'null') {
+     return <img src={apiURL + '/uploads/' + props.image} style={styles} className="img-thumbnail" alt="Artist" />;
   }
-
-  return <img src={image} style={styles} className="img-thumbnail" alt="Artist" />;
+  return null;
 };
 
 export default ArtistThumbnail;
