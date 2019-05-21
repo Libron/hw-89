@@ -24,6 +24,16 @@ const UserSchema = new Schema({
         required: true,
         default: 'user',
         enum: ['admin', 'user']
+    },
+    facebookId: {
+        type: String
+    },
+    avatarImage: {
+        type: String
+    },
+    displayName: {
+        type: String,
+        required: true
     }
 });
 

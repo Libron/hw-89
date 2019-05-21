@@ -11,6 +11,7 @@ import {
     UncontrolledDropdown
 } from "reactstrap";
 import {NavLink as RouterNavLink} from 'react-router-dom';
+import AvatarThumbnail from "../AvatarThumbnail/AvatarThumbnail";
 
 const Toolbar = ({user, logout}) => {
     return (
@@ -21,7 +22,7 @@ const Toolbar = ({user, logout}) => {
                         {user ? (
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
-                                    Hello, {user.username}
+                                    Hello, <span><AvatarThumbnail fb={user.facebookId} image={user.avatarImage}/> {user.displayName}</span>
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>

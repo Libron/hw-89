@@ -1,5 +1,6 @@
 import axios from '../../axios-api';
 import {push} from 'connected-react-router';
+import {NotificationManager} from 'react-notifications';
 
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
@@ -58,4 +59,19 @@ export const logoutUser = () => {
         dispatch(logoutUserRequest());
         dispatch(push('/login'));
     };
+};
+
+export const facebookLogin = userData => {
+    return dispatch => {
+        return axios.post('/users/facebookLogin', userData).then(
+            response => {
+                dispatch(loginUserSuccess(response.data.user));
+                NotificationManager.success('Loggend in via Facebook');
+                dispatch(push('/'));
+            },
+            () => {
+                dispatch(loginUserFailure('Login via Facebook failed'));
+            }
+        )
+    }
 };

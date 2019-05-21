@@ -43,12 +43,16 @@ const run = async () => {
 
     const [user, admin] = await User.create(
         {
+            displayName:'User Vasya',
+            avatarImage: 'artist1.jpg',
             username: 'user',
             password: '123',
             role: 'user',
             token: nanoid()
         },
         {
+            displayName:'Admin Gena',
+            avatarImage: 'artist2.jpg',
             username: 'admin',
             password: '123',
             role: 'admin',

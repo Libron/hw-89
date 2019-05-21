@@ -1,13 +1,16 @@
 import React, {Component, Fragment} from 'react';
-import {Alert, Button, Col, Form, FormGroup} from "reactstrap";
+import {Alert, Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 import {registerUser} from "../../store/actions/usersActions";
 import {connect} from "react-redux";
 import FormElement from "../../components/Form/FormElement";
+import FacebookLogin from "../../components/FacebookLogin/FacebookLogin";
 
 class Register extends Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        displayName: '',
+        avatarImage: null
     };
 
     inputChangeHandler = event => {
@@ -18,7 +21,20 @@ class Register extends Component {
 
     submitFormHandler = event => {
       event.preventDefault();
-      this.props.registerUser({...this.state});
+
+      const formData = new FormData();
+
+      Object.keys(this.state).forEach(key => {
+          formData.append(key, this.state[key]);
+      });
+
+      this.props.registerUser(formData);
+    };
+
+    fileChangeHandler = event => {
+        this.setState({
+            [event.target.name]: event.target.files[0]
+        })
     };
 
     getFieldError = fieldName => {
@@ -35,6 +51,21 @@ class Register extends Component {
                     </Alert>
                 )}
                 <Form onSubmit={this.submitFormHandler}>
+                    <FormGroup>
+                        <FacebookLogin />
+                    </FormGroup>
+
+                    <FormElement
+                        propertyName="displayName"
+                        title="Display Name"
+                        type="text"
+                        value={this.state.displayName}
+                        onChange={this.inputChangeHandler}
+                        error={this.getFieldError('displayName')}
+                        placeholder="Enter your desired display name"
+                        autoComplete="new-displayName"
+                    />
+
                    <FormElement
                        propertyName="username"
                        title="Username"
@@ -58,10 +89,22 @@ class Register extends Component {
                     />
 
                     <FormGroup row>
+                        <Label sm={2} for="avatarImage">Avatar Image</Label>
+                        <Col sm={10}>
+                            <Input
+                                type="file"
+                                name="avatarImage" id="avatarImage"
+                                onChange={this.fileChangeHandler}
+                            />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup row>
                         <Col sm={{offset: 2, size: 10}}>
                             <Button type="submit" color="primary">Register</Button>
                         </Col>
                     </FormGroup>
+
                 </Form>
             </Fragment>
         );
