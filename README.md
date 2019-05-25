@@ -1,6 +1,6 @@
 Юзеры FB:
 1)
-username: bpycorigbj_1558718709@tfbnw.net
+username: vjgwetdygs_1558787638@tfbnw.net
 
 password: 111aaa
 
@@ -9,7 +9,7 @@ role: user
 
 
 2)
-username: rgzspaivls_1558718705@tfbnw.net
+username: derhyqydqs_1558787643@tfbnw.net
 
 password: 111aaa
 
